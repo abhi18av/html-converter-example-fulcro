@@ -12,6 +12,8 @@
     [taoensso.timbre :as log]
     [camel-snake-kebab.core :as csk]
     [hickory.core :as hc]
+    [clojure.set :as set]
+    [clojure.pprint :refer [pprint]]
     [com.fulcrologic.fulcro-css.css :as css]
     [com.fulcrologic.fulcro.algorithms.form-state :as fs]
     [clojure.string :as str]))
@@ -289,7 +291,7 @@
                                                [(csk/->camelCase (keyword k)) (str/trim v)])) lines))]
 
              style-map)
-        (catch #?(:cljs :default :clj Exception) e
+        (catch  js/Error e
           style)))
 
 (defn classes->keyword [className]
